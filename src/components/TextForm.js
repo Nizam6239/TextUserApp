@@ -12,12 +12,18 @@ export const TextForm = (props) => {
   }
   const [text, setText] = useState('Enter text here2');
   return (
-    <div>
+    <>
+    <div className="container">
     <h1>{props.heading}</h1>
     <div className="mb-3">
         <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
     </div>
     <button className="btn btn-primary" onClick={handleUpClick}>Convert to upperCase</button>
 </div>
+<div className="container my-3">
+  <h1>Your Text Summary</h1>
+  <p>{text.split(" ").length} word and {text.length} characters</p>
+</div>
+</>
   )
 }
