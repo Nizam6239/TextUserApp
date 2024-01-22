@@ -6,23 +6,37 @@ export const TextForm = (props) => {
     let newText = text.toUpperCase();
     setText(newText);
   }
+  const handleLoClick = () =>{
+    //console.log("UpperCase was Clicked." + text);
+    let newText = text.toLowerCase();
+    setText(newText);
+  }
   const handleOnChange = (event) => {
     //console.log("ON Change");
     setText(event.target.value);
   }
+  const style = {
+    color: 'black',
+    fontweight: 500
+  };
   const [text, setText] = useState('Enter text here2');
   return (
     <>
     <div className="container">
     <h1>{props.heading}</h1>
     <div className="mb-3">
-        <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+        <textarea style={style} className="form-control bg-info border border-dark" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
     </div>
-    <button className="btn btn-primary" onClick={handleUpClick}>Convert to upperCase</button>
+    <button className="btn btn-primary mr-4" onClick={handleUpClick}>Convert to UpperCase</button>
+    <button className="btn btn-primary mr-4" onClick={handleLoClick}>Convert to LoweCase</button>
 </div>
 <div className="container my-3">
   <h1>Your Text Summary</h1>
-  <p>{text.split(" ").length} word and {text.length} characters</p>
+  <p><b>{text.split(" ").length}</b> word and <b>{text.length}</b> characters</p>
+  <p><b>{Math.round((0.008 * text.split(" ").length) * 100) / 100}</b> Minutes read </p>
+  <p><b>{Math.round(((0.008 * text.split(" ").length) * 100)* 60)/ 100}</b> Second read </p>
+  <h2>Preview</h2>
+  <p>{text}</p>
 </div>
 </>
   )
