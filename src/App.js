@@ -23,11 +23,13 @@ function App() {
     setGreen('green');
     document.body.style.backgroundColor = '#A1EEBD';
     showAlert("Green Mode has been enabled","success");
+    document.title = 'TextUserApp - Green Mode';
     }
     else{
       setGreen('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light Mode has been enabled","success");
+      document.title = 'TextUserApp - Light Mode';
     }
   }
   const toggleMode = () => {
@@ -35,11 +37,13 @@ function App() {
     setMode('light');
     document.body.style.backgroundColor = 'white';
     showAlert("Light Mode has been enabled","success");
+    document.title = 'TextUserApp - Light Mode';
     }
     else{
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
       showAlert("Dark Mode has been enabled","success");
+      document.title = 'TextUserApp - Dark Mode';
     }
   }
   return (
