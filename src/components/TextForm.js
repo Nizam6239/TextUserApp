@@ -5,25 +5,30 @@ export const TextForm = (props) => {
     //console.log("UpperCase was Clicked." + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to Uppercase!","success");
   }
   const handleLoClick = () =>{
     //console.log("UpperCase was Clicked." + text);
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to Lowercase!","success");
   }
   const handleToClear = () =>{
     //console.log("UpperCase was Clicked." + text);
     let newText = '';
     setText(newText);
+    props.showAlert("Text cleared!","success");
   }
   const handleCopy = () =>{
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to Clipboard!","success");
   }
   const handleExtraspaces = () => {
     let newText = text.split(/[ ]+/);
-    setText(newText.join(" "))
+    setText(newText.join(" "));
+    props.showAlert("Extra space removed!","success");
   }
   const handleOnChange = (event) => {
     //console.log("ON Change");
@@ -37,11 +42,11 @@ export const TextForm = (props) => {
     <div className="mb-3">
         <textarea style={{backgroundColor: props.mode==='dark'?'grey':'light',color:props.mode==='dark'?'white':'#042743'}} className="form-control bg-info border border-dark" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
     </div>
-    <button className="btn btn-primary mr-4" onClick={handleUpClick}>Convert to UpperCase</button>
-    <button className="btn btn-primary mr-4" onClick={handleLoClick}>Convert to LoweCase</button>
-    <button className="btn btn-primary mr-4" onClick={handleToClear}>Clear Text</button>
-    <button className="btn btn-primary mr-4" onClick={handleCopy}>Copy Text</button>
-    <button className="btn btn-primary mr-4" onClick={handleExtraspaces}>Remove Extra Spaces</button>
+    <button className="btn btn-primary mx-3" onClick={handleUpClick}>Convert to UpperCase</button>
+    <button className="btn btn-primary mx-3" onClick={handleLoClick}>Convert to LoweCase</button>
+    <button className="btn btn-primary mx-3" onClick={handleToClear}>Clear Text</button>
+    <button className="btn btn-primary mx-3" onClick={handleCopy}>Copy Text</button>
+    <button className="btn btn-primary mx-3" onClick={handleExtraspaces}>Remove Extra Spaces</button>
 </div>
 <div className="container my-3" style={{color:props.mode==='dark'?'white':'#042743'}}>
   <h2>Your Text Summary</h2>
