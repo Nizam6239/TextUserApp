@@ -6,7 +6,7 @@ import {TextForm}  from './components/TextForm';
 import React, { useState } from 'react';
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
 function App() {
-  const [mode, setMode] = useState('light'); //Whether dark mode is enabled or not.
+  const [mode, setMode] = useState('light');
   const [alert, setAlert] = useState(null);
    const showAlert = (message,type) =>{
     setAlert({

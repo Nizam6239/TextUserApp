@@ -2,28 +2,22 @@ import React, {useState} from 'react'
 
 export const TextForm = (props) => {
   const handleUpClick = () =>{
-    //console.log("UpperCase was Clicked." + text);
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to Uppercase!","success");
   }
   const handleLoClick = () =>{
-    //console.log("UpperCase was Clicked." + text);
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to Lowercase!","success");
   }
   const handleToClear = () =>{
-    //console.log("UpperCase was Clicked." + text);
     let newText = '';
     setText(newText);
     props.showAlert("Text cleared!","success");
   }
   const handleCopy = () =>{
-    var text = document.getElementById("myBox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+    navigator.clipboard.writeText(text);
     props.showAlert("Copied to Clipboard!","success");
   }
   const handleExtraspaces = () => {
@@ -32,7 +26,6 @@ export const TextForm = (props) => {
     props.showAlert("Extra space removed","success");
   }
   const handleOnChange = (event) => {
-    //console.log("ON Change");
     setText(event.target.value);
   }
   const [text, setText] = useState('');
@@ -51,7 +44,7 @@ export const TextForm = (props) => {
 </div>
 <div className="container my-3" style={{color:props.mode==='dark'?'white':'#042743'}}>
   <h2>Your Text Summary</h2>
-  <p><b>{text.split(" ").filter((element)=>{return element.length!==0}).length}</b> word and <b>{text.length}</b> characters</p>
+  <p><b>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length}</b> word and <b>{text.length}</b> characters</p>
   <p><b>{Math.round((0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length) * 100) / 100}</b> Minutes read </p>
   <p><b>{Math.round(((0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length) * 100)* 60)/ 100}</b> Second read </p>
   <h3>Preview</h3>
